@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>思维模式篇 · 03：尺度思维</title>
+<title>另眼相看 · 第3期：尺度思维</title>
 <style>
 :root{--bg:#faf8f5;--text:#1a1a2e;--accent:#c97a5a;--accent-dark:#9a5040;--disc-color:#4a7fb5;--muted:#6b7280}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -62,7 +62,7 @@ details .content{padding:0 24px 20px;color:#444}
 </head>
 <body>
 <header class="hero">
-<div class="hero-badge">思维模式篇 · 第3期</div>
+<div class="hero-badge">芒格计划 · 另眼相看 · 第3期</div>
 <div class="hero-tags"><span>⚛️ 物理学 · 第1季</span><span>03/48</span></div>
 <h1>尺度<em>思维</em></h1>
 <p class="sub">像物理学家一样思考——换一个尺度，规律就变了</p>
@@ -352,15 +352,15 @@ function extractIssue(html,n){
 try{var title="",model="";var tm=html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);if(tm){title=tm[1].replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();}var mm=html.match(/class="meta"[^>]*>([^<]+)/i);if(!mm)mm=html.match(/class="sub"[^>]*>([\s\S]*?)<\/p>/i);if(mm){model=mm[1].replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();}var sm=html.match(/<section[^>]*>([\s\S]*?)<hr\s+class="divider-solid/i);var text="";if(sm){text=sm[1].replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();}if(text.length>2000)text=text.slice(0,2000)+"…";return {n:n,title:title||("第"+n+"期"),model:model||"",text:text};}catch(e){return null;}
 }
 function buildSystemPrompt(){
-if(!_aictx||!_aictx.issues||!_aictx.issues.length)return "你是\"芒格计划-思维模式篇\"的AI助教。思维模式篇是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。你的风格：说人话、简洁、像博学的朋友。请用中文回复。";
-var p="你是\"芒格计划-思维模式篇\"的AI助教。思维模式篇是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。目前第1季是物理学。以下是各期摘要：\n\n";
+if(!_aictx||!_aictx.issues||!_aictx.issues.length)return "你是\"另眼相看（芒格计划旗下）\"的AI助教。另眼相看是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。你的风格：说人话、简洁、像博学的朋友。请用中文回复。";
+var p="你是\"另眼相看（芒格计划旗下）\"的AI助教。另眼相看是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。目前第1季是物理学。以下是各期摘要：\n\n";
 for(var i=0;i<_aictx.issues.length;i++){var iss=_aictx.issues[i];p+="第"+iss.n+"期《"+iss.title+"》—— "+iss.model+"\n"+iss.text+"\n\n";}
 var cur=info();if(cur&&cur.n)p+="用户当前正在阅读：第"+cur.n+"期《"+cur.t+"》";
 return p;
 }
 function renderChat(){
 var b=document.getElementById("aimsgs");if(!b)return;var sc=document.getElementById("aic");if(sc)sc.textContent=_aichat.length?"("+_aichat.length+"条)":"(空)";var html="";
-if(!_aichat.length&&_aictx){var greet="你好！我是思维模式篇的AI助教 🤖\n\n我已经读完了目前发布的全部4期物理学内容。你可以问我：\n\n• 某个底层思维的核心概念（比如\"什么是尺度思维？\"）\n• 不同思维之间的联系（比如\"守恒思维和尺度思维有什么关系？\"）\n• 用这些思维解释现实问题（比如\"为什么同一个问题在不同尺度下答案完全不同？\"）\n• 你正在阅读的文章里的任何问题\n\n有什么想聊的？";html+='<div class="aichat-msg aichat-assistant"><div class="lbl">AI</div><div class="bub">'+esc(greet).replace(/\n/g,"<br>")+'</div></div>';}
+if(!_aichat.length&&_aictx){var greet="你好！我是另眼相看的AI助教 🤖\n\n我已经读完了目前发布的全部4期物理学内容。你可以问我：\n\n• 某个底层思维的核心概念（比如\"什么是尺度思维？\"）\n• 不同思维之间的联系（比如\"守恒思维和尺度思维有什么关系？\"）\n• 用这些思维解释现实问题（比如\"为什么同一个问题在不同尺度下答案完全不同？\"）\n• 你正在阅读的文章里的任何问题\n\n有什么想聊的？";html+='<div class="aichat-msg aichat-assistant"><div class="lbl">AI</div><div class="bub">'+esc(greet).replace(/\n/g,"<br>")+'</div></div>';}
 for(var i=0;i<_aichat.length;i++){var m=_aichat[i];if(m.role==="system"){html+='<div class="aichat-msg aichat-sys"><div class="bub">'+esc(m.content)+'</div></div>';}else if(m.role==="user"){html+='<div class="aichat-msg aichat-user"><div class="lbl">你</div><div class="bub">'+esc(m.content).replace(/\n/g,"<br>")+'</div></div>';}else{html+='<div class="aichat-msg aichat-assistant"><div class="lbl">AI</div><div class="bub">'+esc(m.content).replace(/\n/g,"<br>")+'</div></div>';}}
 if(_aibusy){html+='<div class="aichat-loading"><span></span><span></span><span></span></div>';}b.innerHTML=html;b.scrollTop=b.scrollHeight;
 setTimeout(function(){restore();},100);
