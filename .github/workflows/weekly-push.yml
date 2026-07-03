@@ -1,7 +1,7 @@
 name: 每周二四推送
 on:
   schedule:
-    - cron: "0 12 * * 2,4"
+    - cron: "0 12 * * 2,5"
   workflow_dispatch:
     inputs:
       issue:
