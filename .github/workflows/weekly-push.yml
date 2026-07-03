@@ -52,7 +52,7 @@ jobs:
                       'template': 'carmine'
                   },
                   'elements': [
-                      {'tag': 'markdown', 'content': '**🧠 ${H1}**\n${SUB}\n${META}'},
+                      {'tag': 'markdown', 'content': '**🧠 ${H1}**\n${SUB}\n*${META}*'},
                       {'tag': 'hr'},
                       {
                           'tag': 'action',
