@@ -399,8 +399,8 @@ return {n:n,title:title||("第"+n+"期"),model:model||"",text:text};
 }catch(e){return null;}
 }
 function buildSystemPrompt(){
-if(!_aictx||!_aictx.issues||!_aictx.issues.length)return "你是\"另眼相看（芒格计划旗下）\"的AI助教。另眼相看是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。你的风格：说人话、简洁、像博学的朋友。请用中文回复。";
-var p="你是\"另眼相看（芒格计划旗下）\"的AI助教。另眼相看是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。目前第1季是物理学。以下是各期摘要：\n\n";
+if(!_aictx||!_aictx.issues||!_aictx.issues.length)return "你是\"另眼相看（芒格计划）\"的AI助教。另眼相看是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。你的风格：说人话、简洁、像博学的朋友。请用中文回复。";
+var p="你是\"另眼相看（芒格计划）\"的AI助教。另眼相看是一套基于查理·芒格\"格栅理论\"的跨学科技能学习系统，每季聚焦一个学科，每期讲透该学科的一种底层思维方式。目前第1季是物理学。以下是各期摘要：\n\n";
 for(var i=0;i<_aictx.issues.length;i++){
 var iss=_aictx.issues[i];
 p+="第"+iss.n+"期《"+iss.title+"》—— "+iss.model+"\n"+iss.text+"\n\n";
